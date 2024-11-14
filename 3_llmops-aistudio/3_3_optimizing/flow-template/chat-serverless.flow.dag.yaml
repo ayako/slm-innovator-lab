@@ -24,9 +24,9 @@ nodes:
   type: python
   source:
     type: code
-    path: phi35_finetuned.py
+    path: phi35_chatcompletion.py
   inputs:
-    connection: replace with your connection name
+    connection: {{your_phi35_serverless_connection_name}}
     question: ${inputs.question}
     context: ${inputs.context}
 - name: gpt4o
@@ -36,11 +36,11 @@ nodes:
     path: chat.jinja2
   inputs:
     deployment_name: gpt-4o
-    temperature: 0.7
+    temperature: 0.2
     top_p: 1
-    max_tokens: 256
+    max_tokens: 512
     question: ${inputs.question}
-  connection: replace with your connection name
+  connection: {{your_gpt4o_connection_name}}
   api: chat
   module: promptflow.tools.aoai
   use_variants: false
